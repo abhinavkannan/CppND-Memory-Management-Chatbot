@@ -18,18 +18,18 @@ private:
     ////
 
 	// Get exclusive ownership for _chatLogic
-	std::unique_ptr<ChatLogic> _chatLogic;
+    std::unique_ptr<ChatLogic> _chatLogic;	// TASK 1
 
     ////
     //// EOF STUDENT CODE
 
 public:
     // constructor / destructor
-	ChatBotPanelDialog(wxWindow *parent, wxWindowID id);
+    ChatBotPanelDialog(wxWindow *parent, wxWindowID id);
     ~ChatBotPanelDialog();
 
     // getter / setter
-	ChatLogic *GetChatLogicHandle() const { return _chatLogic.get(); }
+    ChatLogic *GetChatLogicHandle() const { return _chatLogic.get(); }	// TASK 1
 
     // events
     void paintEvent(wxPaintEvent &evt);

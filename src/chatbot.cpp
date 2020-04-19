@@ -44,9 +44,10 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
+// TASK2
 ChatBot::ChatBot(const ChatBot &source)
 {
-	std::cout << "Chatbot Copy Constructor called to copy content of instance " << &source << " to instance " << this << std::endl;
+    std::cout << "Chatbot Copy Constructor" << std::endl;
 	if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
 	{
 		delete _image;
@@ -60,7 +61,7 @@ ChatBot::ChatBot(const ChatBot &source)
 
 ChatBot& ChatBot::operator=(const ChatBot &source)
 {
-	std::cout << "Chatbot Copy Assignment operator called to assign content of instance" << &source << "to instance " << this << std::endl;
+	std::cout << "Chatbot Copy Assignment Operator" << std::endl;
 	if (this == &source)
 	{
 		return *this;
@@ -75,6 +76,40 @@ ChatBot& ChatBot::operator=(const ChatBot &source)
 	_chatLogic = source._chatLogic;
 	_rootNode = source._rootNode;
 	_image = source._image;
+
+	return *this;
+}
+
+ChatBot::ChatBot(ChatBot &&source)
+{
+	std::cout << "Chatbot Move Constructor" << std::endl;
+
+	_chatLogic = source._chatLogic;
+	_rootNode = source._rootNode;
+	_image = source._image;
+
+	source._chatLogic = nullptr;
+	source._rootNode = nullptr;
+	delete source._image;
+	source._image = NULL;
+}
+
+ChatBot& ChatBot::operator=(ChatBot &&source)
+{
+	std::cout << "Chatbot Move Assignment Operator" << std::endl;
+	if (this == &source)
+	{
+		return *this;
+	}
+
+	_chatLogic = source._chatLogic;
+	_rootNode = source._rootNode;
+	_image = source._image;
+
+	source._chatLogic = nullptr;
+	source._rootNode = nullptr;
+	delete source._image;
+	source._image = NULL;
 
 	return *this;
 }
