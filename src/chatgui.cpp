@@ -117,8 +117,8 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     //// STUDENT CODE
     ////
 
-    // Create a unique pointer for ChatLogic reference to get exclusive ownership
-    _chatLogic = std::unique_ptr<ChatLogic>(new ChatLogic());	// TASK 1
+    // TASK 1 - Take exclusive ownership of ChatLogic object
+    _chatLogic = std::unique_ptr<ChatLogic>(new ChatLogic());
 
     // pass pointer to chatbot dialog so answers can be displayed in GUI
     _chatLogic->SetPanelDialogHandle(this);
@@ -134,7 +134,6 @@ ChatBotPanelDialog::~ChatBotPanelDialog()
 {
     //// STUDENT CODE
     ////
-
     ////
     //// EOF STUDENT CODE
 }

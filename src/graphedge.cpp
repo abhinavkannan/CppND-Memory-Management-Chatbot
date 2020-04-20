@@ -6,6 +6,12 @@ GraphEdge::GraphEdge(int id)
     _id = id;
 }
 
+GraphEdge::~GraphEdge()
+{
+	_childNode = nullptr;
+	_parentNode = nullptr;
+}
+
 void GraphEdge::SetChildNode(GraphNode *childNode)
 {
     _childNode = childNode;

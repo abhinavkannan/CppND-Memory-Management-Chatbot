@@ -29,7 +29,7 @@ public:
 
     //// STUDENT CODE
     ////
-    // TASK 2
+	// TASK 2 - Make ChatBot "Rule of Five" compatible
     ChatBot(const ChatBot &source);	            // Copy constructor
     ChatBot& operator=(const ChatBot &source);	// Copy assignment operator
     ChatBot(ChatBot &&source);                  // Move constructor
