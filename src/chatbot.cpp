@@ -44,18 +44,13 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
-// TASK2
+// TASK 2 - Make ChatBot "Rule of Five" compatible
 ChatBot::ChatBot(const ChatBot &source)
 {
     std::cout << "Chatbot Copy Constructor" << std::endl;
-	if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
-	{
-		delete _image;
-		_image = NULL;
-	}
-
 	_chatLogic = source._chatLogic;
 	_rootNode = source._rootNode;
+	_currentNode = source._currentNode;
 	_image = source._image;
 }
 
@@ -67,14 +62,9 @@ ChatBot& ChatBot::operator=(const ChatBot &source)
 		return *this;
 	}
 
-	if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
-	{
-		delete _image;
-		_image = NULL;
-	}
-
 	_chatLogic = source._chatLogic;
 	_rootNode = source._rootNode;
+	_currentNode = source._currentNode;
 	_image = source._image;
 
 	return *this;
@@ -83,14 +73,15 @@ ChatBot& ChatBot::operator=(const ChatBot &source)
 ChatBot::ChatBot(ChatBot &&source)
 {
 	std::cout << "Chatbot Move Constructor" << std::endl;
-
 	_chatLogic = source._chatLogic;
+	_chatLogic->SetChatbotHandle(this);
 	_rootNode = source._rootNode;
+	_currentNode = source._currentNode;
 	_image = source._image;
 
 	source._chatLogic = nullptr;
 	source._rootNode = nullptr;
-	delete source._image;
+	source._currentNode = nullptr;
 	source._image = NULL;
 }
 
@@ -103,12 +94,14 @@ ChatBot& ChatBot::operator=(ChatBot &&source)
 	}
 
 	_chatLogic = source._chatLogic;
+	_chatLogic->SetChatbotHandle(this);
 	_rootNode = source._rootNode;
+	_currentNode = source._currentNode;
 	_image = source._image;
 
 	source._chatLogic = nullptr;
 	source._rootNode = nullptr;
-	delete source._image;
+	source._currentNode = nullptr;
 	source._image = NULL;
 
 	return *this;

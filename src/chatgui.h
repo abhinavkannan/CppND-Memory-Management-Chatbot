@@ -17,8 +17,8 @@ private:
     //// STUDENT CODE
     ////
 
-	// Get exclusive ownership for _chatLogic
-    std::unique_ptr<ChatLogic> _chatLogic;	// TASK 1
+	// TASK 1 - Take exclusive ownership of ChatLogic object
+    std::unique_ptr<ChatLogic> _chatLogic;
 
     ////
     //// EOF STUDENT CODE
@@ -29,7 +29,8 @@ public:
     ~ChatBotPanelDialog();
 
     // getter / setter
-    ChatLogic *GetChatLogicHandle() const { return _chatLogic.get(); }	// TASK 1
+	// TASK 1 - Take exclusive ownership of ChatLogic object
+    ChatLogic *GetChatLogicHandle() const { return _chatLogic.get(); }
 
     // events
     void paintEvent(wxPaintEvent &evt);
